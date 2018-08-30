@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.myfithub.mapper.BranchMapper" >
+    <resultMap id="BaseResultMap" type="com.myfithub.entities.BranchEntity" >
+        <id column="id" property="id" jdbcType="INT" />
+        <result column="adress" property="adress" jdbcType="VARCHAR" />
+        <result column="beginning_of_work" property="beginning_of_work" jdbcType="TIME" />
+        <result column="end_of_work" property="end_of_work" jdbcType="TIME" />
+        <result column="fitness_clubs_id" property="fitness_clubs_id" jdbcType="INT" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, adress, beginning_of_work, end_of_work,fitness_clubs_id
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM branches
+    </select>
+
+    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM branches
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.myfithub.entities.BranchEntity" >
+        INSERT INTO
+        users
+        (userName,passWord,nick_name)
+        VALUES
+        (#{userName}, #{passWord}, #{nick_name})
+    </insert>
+
+
+</mapper>
