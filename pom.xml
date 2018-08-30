@@ -76,7 +76,7 @@
     <build>
         <!-- так же мы можем указать жесткое имя при сборке приложения,
         что бы maven не дописывал версию например или сразу подготовить для деплоя на сервер -->
-        <finalName>spring-boot-web-spring-security</finalName>
+      
 
         <plugins>
             <plugin>

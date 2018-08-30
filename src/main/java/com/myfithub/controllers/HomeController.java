@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class HomeController {
 
-    @Autowired
-    private InMemoryUserDetailsManager userManager;
+ //   @Autowired
+   // private InMemoryUserDetailsManager userManager;
 
     @GetMapping("/login")
     public String greeting() {

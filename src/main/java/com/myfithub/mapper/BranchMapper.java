@@ -1,5 +1,6 @@
 package com.myfithub.mapper;
 
+
 import com.myfithub.entities.BranchEntity;
 
 import java.util.List;
@@ -13,3 +14,4 @@ public interface BranchMapper {
 
     void insert(BranchEntity branch);
 }
+

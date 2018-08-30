@@ -5,10 +5,10 @@ import java.sql.Time;
 
 public class BranchEntity implements Serializable {
 
-    private  int id;
-    private String adress;
-    private Time beginning_of_work;
-    private Time end_of_work;
+    private int id;
+    private  String adress;
+    private  Time beginning_of_work;
+    private  Time end_of_work;
     private  int fitness_clubs_id;
 
     public BranchEntity() {

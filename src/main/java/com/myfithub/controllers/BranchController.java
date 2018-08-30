@@ -15,23 +15,23 @@ public class BranchController {
 
 
     @Autowired
-    private BranchMapper BranchMapper;
+    private BranchMapper branchMapper;
 
     @RequestMapping("/getBranches")
     public List<BranchEntity> getBranches() {
-        List<BranchEntity> branches=BranchMapper.getAll();
+        List<BranchEntity> branches=branchMapper.getAll();
         return branches;
     }
 
     @RequestMapping("/getBranch")
     public BranchEntity getBranch(Long id) {
-        BranchEntity branch=BranchMapper.getOne(id);
+        BranchEntity branch=branchMapper.getOne(id);
         return branch;
     }
 
     @RequestMapping("/addBranch")
     public void save(BranchEntity branch) {
-        BranchMapper.insert(branch);
+        branchMapper.insert(branch);
     }
 }
 
