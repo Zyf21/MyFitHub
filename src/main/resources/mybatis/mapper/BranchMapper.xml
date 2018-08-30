@@ -28,11 +28,28 @@
 
     <insert id="insert" parameterType="com.myfithub.entities.BranchEntity" >
         INSERT INTO
-        users
-        (userName,passWord,nick_name)
+        branches
+        (id, adress, beginning_of_work, end_of_work,fitness_clubs_id)
         VALUES
-        (#{userName}, #{passWord}, #{nick_name})
+        (#{id}, #{adress}, #{beginning_of_work}, #{end_of_work}, #{fitness_clubs_id})
     </insert>
 
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM
+        branches
+        WHERE
+        id =#{id}
+    </delete>
+
+    <update id="update" parameterType="com.myfithub.entities.BranchEntity" >
+        UPDATE
+        users
+        SET
+        <if test="userName != null">userName = #{userName},</if>
+        <if test="passWord != null">passWord = #{passWord},</if>
+        nick_name = #{nickName}
+        WHERE
+        id = #{id}
+    </update>
 
 </mapper>

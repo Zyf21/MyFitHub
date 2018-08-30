@@ -4,13 +4,14 @@ package com.myfithub.controllers;
 import com.myfithub.entities.BranchEntity;
 import com.myfithub.mapper.BranchMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/branches")
 public class BranchController {
 
 
@@ -33,5 +34,16 @@ public class BranchController {
     public void save(BranchEntity branch) {
         branchMapper.insert(branch);
     }
+
+    @RequestMapping(value="update")
+    public void update(BranchEntity branch) {
+        branchMapper.update(branch);
+    }
+
+    @RequestMapping(value="/delete/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        branchMapper.delete(id);
+    }
+
 }
 

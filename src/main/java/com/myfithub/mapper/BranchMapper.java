@@ -13,5 +13,9 @@ public interface BranchMapper {
     BranchEntity getOne(Long id);
 
     void insert(BranchEntity branch);
+
+    void delete(Long id);
+
+    void update(BranchEntity user);
 }
 
