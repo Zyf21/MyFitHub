@@ -12,7 +12,7 @@ public interface BranchMapper {
 
     BranchEntity getOne(Long id);
 
-    void insert(BranchEntity branch);
+    BranchEntity insert(BranchEntity branch);
 
     void delete(Long id);
 

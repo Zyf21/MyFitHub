@@ -26,30 +26,28 @@
         WHERE id = #{id}
     </select>
 
-    <insert id="insert" parameterType="com.myfithub.entities.BranchEntity" >
+    <insert id="insert" parameterType="com.myfithub.entities.BranchEntity"  useGeneratedKeys="true"
+            keyProperty="id">
         INSERT INTO
         branches
-        (id, adress, beginning_of_work, end_of_work,fitness_clubs_id)
+            ( adress, beginning_of_work, end_of_work,fitness_clubs_id)
         VALUES
-        (#{id}, #{adress}, #{beginning_of_work}, #{end_of_work}, #{fitness_clubs_id})
+            ( #{adress}, #{beginning_of_work}, #{end_of_work}, #{fitness_clubs_id})
     </insert>
 
     <delete id="delete" parameterType="java.lang.Long" >
-        DELETE FROM
-        branches
-        WHERE
-        id =#{id}
+        DELETE FROM branches
+        WHERE id =#{id}
     </delete>
 
     <update id="update" parameterType="com.myfithub.entities.BranchEntity" >
-        UPDATE
-        users
+        UPDATE branches
         SET
-        <if test="userName != null">userName = #{userName},</if>
-        <if test="passWord != null">passWord = #{passWord},</if>
-        nick_name = #{nickName}
-        WHERE
-        id = #{id}
+        adress = #{adress},
+        beginning_of_work = #{beginning_of_work},
+        end_of_work = #{end_of_work}
+        fitness_clubs_id = #{fitness_clubs_id}
+        WHERE id = #{id}
     </update>
 
 </mapper>

@@ -4,35 +4,35 @@ package com.myfithub.controllers;
 import com.myfithub.entities.BranchEntity;
 import com.myfithub.mapper.BranchMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/branches")
+@RequestMapping("/api/admin/branches")
 public class BranchController {
 
 
     @Autowired
     private BranchMapper branchMapper;
 
-    @RequestMapping("/getBranches")
+    @GetMapping
     public List<BranchEntity> getBranches() {
         List<BranchEntity> branches=branchMapper.getAll();
         return branches;
     }
 
-    @RequestMapping("/getBranch")
-    public BranchEntity getBranch(Long id) {
+    @GetMapping("/{id}")
+    public BranchEntity getBranch(@PathVariable Long id) {
         BranchEntity branch=branchMapper.getOne(id);
         return branch;
     }
 
-    @RequestMapping("/addBranch")
-    public void save(BranchEntity branch) {
-        branchMapper.insert(branch);
+    @PostMapping ()
+    public BranchEntity save(BranchEntity branch) {
+       return branchMapper.insert(branch);
+
+
     }
 
     @RequestMapping(value="update")
