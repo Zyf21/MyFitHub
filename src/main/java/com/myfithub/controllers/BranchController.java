@@ -29,21 +29,20 @@ public class BranchController {
     }
 
     @PostMapping ()
-    public BranchEntity save(BranchEntity branch) {
-       return branchMapper.insert(branch);
-
-
+    public Long save(BranchEntity branch) {
+        branchMapper.insert(branch);
+        return  branch.getId();
     }
 
-    @RequestMapping(value="update")
-    public void update(BranchEntity branch) {
-        branchMapper.update(branch);
-    }
-
-    @RequestMapping(value="/delete/{id}")
-    public void delete(@PathVariable("id") Long id) {
+    @DeleteMapping ("/{id}")
+    public void delete(@PathVariable Long id) {
         branchMapper.delete(id);
     }
 
+    @PutMapping("/{id}")
+    public void update(BranchEntity branch) {
+        branchMapper.update(branch);
+
+    }
 }
 

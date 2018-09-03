@@ -5,7 +5,7 @@ import java.sql.Time;
 
 public class BranchEntity implements Serializable {
 
-    private int id;
+    private Long id;
     private  String adress;
     private  Time beginning_of_work;
     private  Time end_of_work;
@@ -15,7 +15,7 @@ public class BranchEntity implements Serializable {
         super();
     }
 
-    public BranchEntity(int id, String adress, Time beginning_of_work, Time end_of_work, int fitness_clubs_id) {
+    public BranchEntity(Long id, String adress, Time beginning_of_work, Time end_of_work, int fitness_clubs_id) {
         this.id = id;
         this.adress = adress;
         this.beginning_of_work = beginning_of_work;
@@ -23,11 +23,11 @@ public class BranchEntity implements Serializable {
         this.fitness_clubs_id = fitness_clubs_id;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

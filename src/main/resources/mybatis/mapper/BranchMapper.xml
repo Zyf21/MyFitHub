@@ -26,8 +26,7 @@
         WHERE id = #{id}
     </select>
 
-    <insert id="insert" parameterType="com.myfithub.entities.BranchEntity"  useGeneratedKeys="true"
-            keyProperty="id">
+    <insert id="insert" parameterType="com.myfithub.entities.BranchEntity"  useGeneratedKeys="true" keyProperty="id" >
         INSERT INTO
         branches
             ( adress, beginning_of_work, end_of_work,fitness_clubs_id)
@@ -41,11 +40,10 @@
     </delete>
 
     <update id="update" parameterType="com.myfithub.entities.BranchEntity" >
-        UPDATE branches
-        SET
+        UPDATE branches SET
         adress = #{adress},
         beginning_of_work = #{beginning_of_work},
-        end_of_work = #{end_of_work}
+        end_of_work = #{end_of_work},
         fitness_clubs_id = #{fitness_clubs_id}
         WHERE id = #{id}
     </update>

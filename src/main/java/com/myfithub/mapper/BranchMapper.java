@@ -12,10 +12,10 @@ public interface BranchMapper {
 
     BranchEntity getOne(Long id);
 
-    BranchEntity insert(BranchEntity branch);
+    Long insert(BranchEntity branch);
 
     void delete(Long id);
 
-    void update(BranchEntity user);
+    void update(BranchEntity branch);
 }
 
