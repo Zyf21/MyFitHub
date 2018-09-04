@@ -4,10 +4,7 @@ package com.myfithub.controllers;
 import com.myfithub.entities.FitnessClubEntity;
 import com.myfithub.mapper.FitnessClubMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,24 @@ public class FitnessClubController {
 
     @GetMapping("/{id}")
     public FitnessClubEntity getFitnessClub (@PathVariable Long id) {
+        FitnessClubEntity fitnessClub=fitnessClubMapper.getOne(id);
+        return fitnessClub;
+    }
 
+    @PostMapping()
+    public Long save ( @RequestBody FitnessClubEntity fitnessClub){
+        fitnessClubMapper.insert(fitnessClub);
+        return fitnessClub.getId();
+    }
+
+    @DeleteMapping("/{id}")
+    public void  delete (@PathVariable Long id){
+        fitnessClubMapper.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public void update (FitnessClubEntity fitnessclab){
+        fitnessClubMapper.update(fitnessclab);
     }
 
 

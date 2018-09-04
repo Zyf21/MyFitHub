@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.myfithub.mapper.FitnessClubMapper" >
+    <resultMap id="BaseResultMap" type="com.myfithub.entities.FitnessClubEntity" >
+        <id     column="id"                property="id"                jdbcType="INTEGER" />
+        <result column="adress"            property="name"              jdbcType="VARCHAR" />
+
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, name
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM fitness_clubs
+    </select>
+
+    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM fitness_clubs
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.myfithub.entities.BranchEntity"  useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO
+        fitness_clubs
+        (name)
+        VALUES
+        ( #{name})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM fitness_clubs
+        WHERE id =#{id}
+    </delete>
+
+    <update id="update" parameterType="com.myfithub.entities.BranchEntity" >
+        UPDATE fitness_clubs SET
+        name = #{name},
+       }
+        WHERE id = #{id}
+    </update>
+
+</mapper>

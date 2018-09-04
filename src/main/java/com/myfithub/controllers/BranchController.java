@@ -4,6 +4,7 @@ package com.myfithub.controllers;
 import com.myfithub.entities.BranchEntity;
 import com.myfithub.mapper.BranchMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class BranchController {
     }
 
     @PostMapping ()
-    public Long save(BranchEntity branch) {
+    public Long save(@RequestBody BranchEntity branch) {
         branchMapper.insert(branch);
         return  branch.getId();
     }

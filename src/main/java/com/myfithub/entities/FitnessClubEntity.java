@@ -2,7 +2,7 @@ package com.myfithub.entities;
 
 import java.io.Serializable;
 
-public class FitnessClubEntity implements Serializable {
+public class FitnessClubEntity  {
 
     private  Long id;
     private  String name;
