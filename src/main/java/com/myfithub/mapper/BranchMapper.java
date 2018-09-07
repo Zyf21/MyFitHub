@@ -24,6 +24,6 @@ public interface BranchMapper {
 
     void deleteByIdAndClubId(Long id, Long clubId);
 
-    void updateByIdAndClubId(BranchEntity branch, Long clubId);
+    void updateByIdAndClubId(BranchEntity branch);
 }
 

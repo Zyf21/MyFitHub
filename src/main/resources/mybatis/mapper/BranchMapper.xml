@@ -57,26 +57,26 @@
     <delete id="deleteByIdAndClubId">
         DELETE
         FROM branches
-        WHERE id =#{id}
-            AND fitness_clubs_id = #{clubId}
+        WHERE id =#{0}
+            AND fitness_clubs_id = #{1}
     </delete>
 
     <update id="update" parameterType="com.myfithub.entities.BranchEntity" >
-        UPDATE branches SET
-        adress = #{adress},
-        beginningOfWork = #{beginningOfWork},
-        endOfWork = #{endOfWork},
-        fitnessClubsId = #{fitnessClubsId}
-        WHERE id = #{id}
-    </update>
-    <update id="updateByIdAndClubId">
         UPDATE branches SET
         adress = #{adress},
         beginning_of_work = #{beginningOfWork},
         end_of_work = #{endOfWork},
         fitness_clubs_id = #{fitnessClubsId}
         WHERE id = #{id}
-            AND fitness_clubs_id = #{clubId}
+    </update>
+
+    <update id="updateByIdAndClubId" >
+        UPDATE branches SET
+        adress = #{adress},
+        beginning_of_work = #{beginningOfWork},
+        end_of_work = #{endOfWork}
+        WHERE id = #{id}
+            AND fitness_clubs_id = #{fitnessClubsId}
     </update>
 
 </mapper>

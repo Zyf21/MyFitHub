@@ -36,8 +36,9 @@ public class BranchService {
          branchMapper.deleteByIdAndClubId(id,clubId);
     }
 
-    public void update(BranchEntity branch, Long clubId) {
-
-        branchMapper.updateByIdAndClubId(branch, clubId);
+    public void update(Long id, Long clubId, BranchEntity branch) {
+        branch.setId(id);
+        branch.setFitnessClubsId(clubId);
+        branchMapper.updateByIdAndClubId(branch);
     }
 }

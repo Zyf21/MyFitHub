@@ -38,8 +38,8 @@ public class BranchController {
     }
 
     @PutMapping("/{id}")
-    public void update(BranchEntity branch, @PathVariable Long clubId) {
-        branchService.update(branch, clubId);
+    public void update( @RequestBody BranchEntity branch, @PathVariable Long clubId,@PathVariable Long id) {
+        branchService.update(id, clubId, branch);
 
     }
 }
