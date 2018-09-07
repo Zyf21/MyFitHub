@@ -7,20 +7,20 @@ public class BranchEntity implements Serializable {
 
     private Long id;
     private  String adress;
-    private  Time beginning_of_work;
-    private  Time end_of_work;
-    private  int fitness_clubs_id;
+    private Time beginningOfWork;
+    private Time endOfWork;
+    private Long fitnessClubsId;
 
     public BranchEntity() {
         super();
     }
 
-    public BranchEntity(Long id, String adress, Time beginning_of_work, Time end_of_work, int fitness_clubs_id) {
+    public BranchEntity(Long id, String adress, Time beginningOfWork, Time endOfWork, Long fitnessClubsId) {
         this.id = id;
         this.adress = adress;
-        this.beginning_of_work = beginning_of_work;
-        this.end_of_work = end_of_work;
-        this.fitness_clubs_id = fitness_clubs_id;
+        this.beginningOfWork = beginningOfWork;
+        this.endOfWork = endOfWork;
+        this.fitnessClubsId = fitnessClubsId;
     }
 
     public Long getId() {
@@ -39,28 +39,28 @@ public class BranchEntity implements Serializable {
         this.adress = adress;
     }
 
-    public Time getBeginning_of_work() {
-        return beginning_of_work;
+    public Time getBeginningOfWork() {
+        return beginningOfWork;
     }
 
-    public void setBeginning_of_work(Time beginning_of_work) {
-        this.beginning_of_work = beginning_of_work;
+    public void setBeginningOfWork(Time beginningOfWork) {
+        this.beginningOfWork = beginningOfWork;
     }
 
-    public Time getEnd_of_work() {
-        return end_of_work;
+    public Time getEndOfWork() {
+        return endOfWork;
     }
 
-    public void setEnd_of_work(Time end_of_work) {
-        this.end_of_work = end_of_work;
+    public void setEndOfWork(Time endOfWork) {
+        this.endOfWork = endOfWork;
     }
 
-    public int getFitness_clubs_id() {
-        return fitness_clubs_id;
+    public Long getFitnessClubsId() {
+        return fitnessClubsId;
     }
 
-    public void setFitness_clubs_id(int fitness_clubs_id) {
-        this.fitness_clubs_id = fitness_clubs_id;
+    public void setFitnessClubsId(Long fitnessClubsId) {
+        this.fitnessClubsId = fitnessClubsId;
     }
 
     @Override
@@ -68,9 +68,9 @@ public class BranchEntity implements Serializable {
         return "BranchEntity{" +
                 "id=" + id +
                 ", adress='" + adress + '\'' +
-                ", beginning_of_work=" + beginning_of_work +
-                ", end_of_work=" + end_of_work +
-                ", fitness_clubs_id=" + fitness_clubs_id +
+                ", beginningOfWork=" + beginningOfWork +
+                ", endOfWork=" + endOfWork +
+                ", fitnessClubsId=" + fitnessClubsId +
                 '}';
     }
 }

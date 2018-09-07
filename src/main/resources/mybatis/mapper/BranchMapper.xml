@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.myfithub.mapper.BranchMapper" >
-    <resultMap id="BaseResultMap" type="com.myfithub.entities.BranchEntity" >
+    <resultMap id="branch" type="com.myfithub.entities.BranchEntity" >
         <id     column="id"                property="id"                jdbcType="INTEGER" />
         <result column="adress"            property="adress"            jdbcType="VARCHAR" />
-        <result column="beginning_of_work" property="beginning_of_work" jdbcType="TIME" />
-        <result column="end_of_work"       property="end_of_work"       jdbcType="TIME" />
-        <result column="fitness_clubs_id"  property="fitness_clubs_id"  jdbcType="INTEGER" />
+        <result column="beginning_of_work" property="beginningOfWork"   jdbcType="TIME" />
+        <result column="end_of_work"       property="endOfWork"         jdbcType="TIME" />
+        <result column="fitness_clubs_id"  property="fitnessClubsId"    jdbcType="INTEGER" />
     </resultMap>
 
     <sql id="Base_Column_List" >
         id, adress, beginning_of_work, end_of_work,fitness_clubs_id
     </sql>
 
-    <select id="getAll" resultMap="BaseResultMap"  >
+    <select id="getAll" resultMap="branch"  >
         SELECT
         <include refid="Base_Column_List" />
         FROM branches
     </select>
 
-    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+    <select id="getOne" parameterType="java.lang.Long" resultMap="branch" >
         SELECT
         <include refid="Base_Column_List" />
         FROM branches
         WHERE id = #{id}
+    </select>
+
+    <select id="getAllBranchesByClub" resultMap="branch">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM branches
+        WHERE fitness_clubs_id = #{clubId}
+    </select>
+    <select id="getByIdAndClubId" resultMap="branch">
+
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM branches
+        WHERE id = #{0}
+            AND fitness_clubs_id = #{1}
     </select>
 
     <insert id="insert" parameterType="com.myfithub.entities.BranchEntity"  useGeneratedKeys="true" keyProperty="id" >
@@ -31,7 +46,7 @@
         branches
             ( adress, beginning_of_work, end_of_work,fitness_clubs_id)
         VALUES
-            ( #{adress}, #{beginning_of_work}, #{end_of_work}, #{fitness_clubs_id})
+            ( #{adress}, #{beginningOfWork}, #{endOfWork}, #{fitnessClubsId})
     </insert>
 
     <delete id="delete" parameterType="java.lang.Long" >
@@ -39,13 +54,29 @@
         WHERE id =#{id}
     </delete>
 
+    <delete id="deleteByIdAndClubId">
+        DELETE
+        FROM branches
+        WHERE id =#{id}
+            AND fitness_clubs_id = #{clubId}
+    </delete>
+
     <update id="update" parameterType="com.myfithub.entities.BranchEntity" >
         UPDATE branches SET
         adress = #{adress},
-        beginning_of_work = #{beginning_of_work},
-        end_of_work = #{end_of_work},
-        fitness_clubs_id = #{fitness_clubs_id}
+        beginningOfWork = #{beginningOfWork},
+        endOfWork = #{endOfWork},
+        fitnessClubsId = #{fitnessClubsId}
         WHERE id = #{id}
+    </update>
+    <update id="updateByIdAndClubId">
+        UPDATE branches SET
+        adress = #{adress},
+        beginning_of_work = #{beginningOfWork},
+        end_of_work = #{endOfWork},
+        fitness_clubs_id = #{fitnessClubsId}
+        WHERE id = #{id}
+            AND fitness_clubs_id = #{clubId}
     </update>
 
 </mapper>

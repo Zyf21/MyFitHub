@@ -3,44 +3,44 @@ package com.myfithub.controllers;
 
 import com.myfithub.entities.FitnessClubEntity;
 import com.myfithub.mapper.FitnessClubMapper;
+import com.myfithub.services.FitnessClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/admin/fitnessClubs")
+@RequestMapping("/api/admin/clubs")
 public class FitnessClubController {
 
-    @Autowired
-    public FitnessClubMapper fitnessClubMapper;
+   @Autowired
+   private FitnessClubService fitnessClubService;
+
+
 
     @GetMapping
     public List<FitnessClubEntity> getFitnessClubs(){
-        List<FitnessClubEntity> fitnessClubs = fitnessClubMapper.getAll();
-        return fitnessClubs;
+        return fitnessClubService.getAll();
     }
 
     @GetMapping("/{id}")
     public FitnessClubEntity getFitnessClub (@PathVariable Long id) {
-        FitnessClubEntity fitnessClub=fitnessClubMapper.getOne(id);
-        return fitnessClub;
+        return fitnessClubService.getOne(id);
     }
 
     @PostMapping()
     public Long save ( @RequestBody FitnessClubEntity fitnessClub){
-        fitnessClubMapper.insert(fitnessClub);
-        return fitnessClub.getId();
+      return   fitnessClubService.insert(fitnessClub);
     }
 
     @DeleteMapping("/{id}")
     public void  delete (@PathVariable Long id){
-        fitnessClubMapper.delete(id);
+        fitnessClubService.delete(id);
     }
 
     @PutMapping("/{id}")
     public void update (FitnessClubEntity fitnessclab){
-        fitnessClubMapper.update(fitnessclab);
+        fitnessClubService.update(fitnessclab);
     }
 
 

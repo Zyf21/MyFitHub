@@ -2,47 +2,44 @@ package com.myfithub.controllers;
 
 
 import com.myfithub.entities.BranchEntity;
-import com.myfithub.mapper.BranchMapper;
+import com.myfithub.services.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/admin/branches")
+@RequestMapping("/api/admin/clubs/{clubId}/branches")
 public class BranchController {
 
 
     @Autowired
-    private BranchMapper branchMapper;
+    private BranchService branchService;
 
     @GetMapping
-    public List<BranchEntity> getBranches() {
-        List<BranchEntity> branches=branchMapper.getAll();
-        return branches;
+    public List<BranchEntity> getBranchesByClub(@PathVariable Long clubId) {
+        return branchService.getAllBranchesByClub(clubId);
     }
 
     @GetMapping("/{id}")
-    public BranchEntity getBranch(@PathVariable Long id) {
-        BranchEntity branch=branchMapper.getOne(id);
-        return branch;
+    public BranchEntity getBranch(@PathVariable Long id, @PathVariable Long clubId) {
+        return branchService.getOne(id, clubId);
     }
 
-    @PostMapping ()
-    public Long save(@RequestBody BranchEntity branch) {
-        branchMapper.insert(branch);
+    @PostMapping
+    public Long save(@RequestBody BranchEntity branch, @PathVariable Long clubId) {
+        branchService.insert(clubId, branch);
         return  branch.getId();
     }
 
     @DeleteMapping ("/{id}")
-    public void delete(@PathVariable Long id) {
-        branchMapper.delete(id);
+    public void delete(@PathVariable Long id, @PathVariable Long clubId) {
+        branchService.delete(id, clubId);
     }
 
     @PutMapping("/{id}")
-    public void update(BranchEntity branch) {
-        branchMapper.update(branch);
+    public void update(BranchEntity branch, @PathVariable Long clubId) {
+        branchService.update(branch, clubId);
 
     }
 }

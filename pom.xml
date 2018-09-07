@@ -43,15 +43,9 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!--<dependency>-->
-
     </dependencies>
 
     <build>
-        <!-- так же мы можем указать жесткое имя при сборке приложения,
-        что бы maven не дописывал версию например или сразу подготовить для деплоя на сервер -->
-      
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -59,7 +53,5 @@
             </plugin>
         </plugins>
     </build>
-
-
 
 </project>
